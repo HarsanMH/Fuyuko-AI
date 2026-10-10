@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101010">
+  <meta name="description" content="Fuyuko AI — asisten Minecraft Bedrock Add-On.">
+  <title>Fuyuko AI</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/static/icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">F</div>
+        <div><strong>Fuyuko AI</strong><small>Minecraft assistant</small></div>
+      </div>
+      <button class="new-chat" id="newChatBtn"><span>＋</span><span data-i18n="newChat">Chat baru</span></button>
+      <div class="side-label" data-i18n="specialist">ASISTEN KHUSUS</div>
+      <div class="specialist-card">
+        <span class="specialist-icon">⛏</span>
+        <div><strong>Minecraft Bedrock</strong><small>JSON · Add-On · Script API</small></div>
+      </div>
+      <div class="sidebar-bottom">
+        <button class="side-action" id="installBtn" hidden>⇩ <span data-i18n="install">Pasang aplikasi</span></button>
+        <button class="side-action" id="languageBtn">文 <span>Bahasa: Indonesia</span></button>
+        <p class="privacy-note" data-i18n="privacy">API key disimpan di server, bukan di aplikasi.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-button menu-toggle" id="menuBtn" aria-label="Open menu">☰</button>
+        <div class="mobile-brand"><span class="brand-mark small">F</span><strong>Fuyuko AI</strong></div>
+        <div class="topbar-right">
+          <span class="status-dot"></span><span data-i18n="bedrockAssistant">Asisten Bedrock</span>
+        </div>
+      </header>
+
+      <section class="chat-area" id="chatArea" aria-live="polite">
+        <div class="welcome" id="welcome">
+          <div class="welcome-mark">F</div>
+          <h1 data-i18n="welcomeTitle">Apa yang ingin kamu buat?</h1>
+          <p data-i18n="welcomeSubtitle">Asisten untuk Minecraft Bedrock Add-On.</p>
+          <div class="suggestions">
+            <button class="suggestion" data-prompt-id="ore"><span>⛏</span><strong data-i18n="suggestOre">Buat custom ore</strong><small data-i18n="suggestOreSub">Block, loot table, dan Fortune</small></button>
+            <button class="suggestion" data-prompt-id="json"><span>{ }</span><strong data-i18n="suggestJson">Periksa JSON</strong><small data-i18n="suggestJsonSub">Cari kesalahan format</small></button>
+            <button class="suggestion" data-prompt-id="script"><span>⌘</span><strong data-i18n="suggestScript">Bantu Script API</strong><small data-i18n="suggestScriptSub">Contoh kode Bedrock</small></button>
+            <button class="suggestion" data-prompt-id="recipe"><span>⚒</span><strong data-i18n="suggestRecipe">Buat recipe</strong><small data-i18n="suggestRecipeSub">Resep crafting add-on</small></button>
+          </div>
+        </div>
+        <div class="messages" id="messages"></div>
+      </section>
+
+      <footer class="composer-wrap">
+        <div class="composer" id="composer">
+          <textarea id="messageInput" rows="1" maxlength="8000" placeholder="Tanya tentang Minecraft Bedrock..." aria-label="Message"></textarea>
+          <button id="sendBtn" class="send-button" aria-label="Kirim pesan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+        </div>
+        <div class="composer-meta"><span data-i18n="disclaimer">Fuyuko AI bisa membuat kesalahan. Periksa kode sebelum dipakai.</span><button id="clearBtn" data-i18n="clearChat">Hapus chat</button></div>
+      </footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="accessModal" hidden>
+    <form class="access-modal" id="accessForm">
+      <div class="welcome-mark">F</div>
+      <h2 data-i18n="accessTitle">Masuk ke Fuyuko AI</h2>
+      <p data-i18n="accessDescription">Masukkan kode akses aplikasi yang disetel oleh pemilik.</p>
+      <input id="accessInput" type="password" autocomplete="current-password" placeholder="Kode akses" required>
+      <p class="error-text" id="accessError" hidden></p>
+      <button class="primary-button" type="submit" data-i18n="continue">Lanjutkan</button>
+    </form>
+  </div>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
